@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 
 var client_id = '9eabb22b1ec744c0a88563a793b78127';
 var client_secret = '89f50481607d468b8eb07d1f216decda';
-var redirect_uri = 'http://localhost:9999/callback';
+var redirect_uri = 'https://adivinheamusicaapi.onrender.com/callback';
 
 /**
  * Generates a random string containing numbers and letters
@@ -68,7 +68,7 @@ app.get('/callback', function(req, res) {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
-        redirect_uri: 'http://localhost:9999/callback',
+        redirect_uri: 'https://adivinheamusicaapi.onrender.com/callback',
         grant_type: 'authorization_code'
       },
       headers: {
@@ -135,5 +135,4 @@ app.get('/refresh_token', function(req, res) {
 });
 
 
-console.log('Listening on 9999');
-app.listen(9999);
+app.listen(process.env.PORT || 5000);
